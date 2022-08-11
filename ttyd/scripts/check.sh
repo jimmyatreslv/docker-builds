@@ -14,3 +14,5 @@ runcmd node -v
 runcmd jwt -h
 
 runcmd kubectl version
+
+runcmd http --version
