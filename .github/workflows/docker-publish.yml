@@ -24,8 +24,6 @@ env:
   REGISTRY: ghcr.io
   # github.repository as <account>/<repo>
   IMAGE_NAME: jimmyatreslv/ttyd
-  TAG: $(date +%s)
-
 
 jobs:
   build:
@@ -41,10 +39,7 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
-
-      - name: Build the Docker image
-        run: docker build . --file ttyd/Dockerfile --tag ${{ env.IMAGE_NAME }}:${{ env.TAG }}
-
+        
       # Install the cosign tool except on PR
       # https://github.com/sigstore/cosign-installer
       - name: Install cosign
@@ -82,7 +77,7 @@ jobs:
         id: build-and-push
         uses: docker/build-push-action@ac9327eae2b366085ac7f6a2d02df8aa8ead720a
         with:
-          context: .
+          context: ttyd
           push: ${{ github.event_name != 'pull_request' }}
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
