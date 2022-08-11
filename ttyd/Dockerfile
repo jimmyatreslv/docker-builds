@@ -14,7 +14,7 @@ RUN curl -sL https://dl.yarnpkg.com/debian/pubkey.gpg | gpg --dearmor | tee /usr
 
 RUN echo "deb [signed-by=/usr/share/keyrings/yarnkey.gpg] https://dl.yarnpkg.com/debian stable main" | tee /etc/apt/sources.list.d/yarn.list
 
-RUN apt update && apt install yarn nodejs httpie
+RUN apt update && apt install yarn nodejs httpie git vim bash-completion
 
 RUN yarn global add jsonwebtokencli insomnia-inso
 
