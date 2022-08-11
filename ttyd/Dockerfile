@@ -17,3 +17,9 @@ RUN echo "deb [signed-by=/usr/share/keyrings/yarnkey.gpg] https://dl.yarnpkg.com
 RUN apt update && apt install yarn nodejs
 
 RUN yarn global add jsonwebtokencli insomnia-inso
+
+RUN curl -o /usr/local/bin/kubectl -L "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
+
+RUN chmod +x /usr/local/bin/kubectl
+
+COPY scripts /root/scripts
